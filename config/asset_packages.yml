@@ -1,0 +1,9 @@
+--- 
+javascripts: 
+- base: 
+  - jquery-1.3.2.min
+  - jrails
+  - application
+stylesheets: 
+- base: 
+  - main

@@ -1,0 +1,35 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: smartset_dev.postgresql
+  pool: 5
+  username: username
+  password: 
+  template: template0 # Required for UTF8 encoding
+  host: localhost
+  port: 5432
+ 
+test: &test
+  adapter: postgresql
+  encoding: utf8
+  database: smartset_test.postgresql
+  pool: 5
+  username: username
+  password: 
+  template: template0 # Required for UTF8 encoding
+  host: localhost
+  port: 5432
+ 
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: smartset_pro.postgresql
+  pool: 5
+  username: username
+  password: 
+  template: template0 # Required for UTF8 encoding
+  host: localhost
+  port: 5432
+
+cucumber:
+  <<: *test
