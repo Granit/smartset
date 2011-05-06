@@ -1,0 +1,15 @@
+body {font-family:tahoma; font-size:100%;  background: white}
+#container {width:100%}
+.blocks {background:#fff; border-top:1px solid #AAAAAA; width: 470px; *width:470px; display: -moz-inline-stack;  display:inline-block; font-size:91%; margin: 0 15px 15px 0; min-height:140px; vertical-align:text-top; border:1px solid #797873;  -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 5px 5px 5px 5px; color: #4b4c4c; zoom:1;  *display:inline;  }
+table {border-color: #777; border-width: 0 0 1px 1px; border-style: solid}
+table {background: grey; border-width: 0 0 1px 1px; border-style: solid}
+td {border-color: #bbb; border-width: 1px 1px 0 0; border-style: solid; margin: 0; padding: 3px; background-color: #FFE; text-align:center; font-size:0.8em}
+th {font-size:0.8em; font-weight:bold; border-color: #bbb; border-width: 1px 1px 0 0; border-style: solid; margin: 0; padding:5px; background-color: BurlyWood; color: black}
+tr.dark td {background-color: turquoise; color: black}
+tr.odd td {background-color: #efefef}
+.zero {color: #ccc}
+h1 {font-size: 1.3em;  text-align:center}
+h2 {font-size: 1.1em; background-color: #cdc}
+a {color:blue; text-decoration:none }
+a:visited {color:blue; text-decoration:none }
+a.someclass {text-decoration:none color:blue}

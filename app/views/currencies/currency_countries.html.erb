@@ -3,15 +3,15 @@
 <tr>
 <td width="20%" style="padding-left: 10; background-color: silver;"><%= button_to 'Countries', countries_path, :method => 'get' %></td>
 <td width="60%" style="padding-left: 10; background-color: silver;"> <%= button_to 'Currencies', currencies_path, :method => 'get' %></td>
-<td style="padding-left: 10; background-color: silver;"></td>
+<td style="padding-left: 10; background-color: silver;"><%= button_to 'Trips', trips_path, :method => 'get' %></td>
 </tr>
 </table>
 
 <table id="form_countries"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
 <tr>
-<td  width="20%" align="center">Country code <font size="1"></font></td>
-<td align="center">Country name <font size="1"></font></td>
-<td align="center">Visited? <font size="1"></font></td>
+<td  width="20%" align="center">Country code</td>
+<td align="center">Country name</td>
+<td align="center">Visited?</td>
 </tr>
 <% @currency_countries.each_with_index do |country, index| %>
 <tr>

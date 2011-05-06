@@ -4,7 +4,7 @@ class CountriesController < ApplicationController
 		#require "#{RAILS_ROOT}/app/models/smodel"
 		#@countries = Country.get_countries# rescue []
 		#if (params[:countries].nil?)
-			@countries = Country.all
+			@countries = Country.order("name")
 		#else
 		#	@countries = params[:countries]
 		#end

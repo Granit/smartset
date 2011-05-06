@@ -1,30 +1,33 @@
-<h1>Smartset</h1>
 <table width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
 <tr>
 <td width="20%" style="padding-left: 10; background-color: silver;"><%= button_to 'Countries', countries_path, :method => 'get' %></td>
 <td width="60%" style="padding-left: 10; background-color: silver;"> <%= button_to 'Currencies', currencies_path, :method => 'get' %></td>
-<td style="padding-left: 10; background-color: silver;"></td>
+<td style="padding-left: 10; background-color: silver;"><%= button_to 'Trips', trips_path, :method => 'get' %></td>
 </tr>
 </table>
 
 <table id="form_currencies"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
 <tr>
-<td  width="20%" align="center">ISO<font size="1"></font></td>
-<td align="center">Currency name (not visited / all countries)<font size="1"></font></td>
+<td  width="20%" align="center">ISO</td>
+<td align="center">Currency name (not visited / all countries)
+<font size="1"><%= @toggle %>
+<%= link_to 'View not visited', currencies_path(:view_visited=>true), :method => 'get' %></font>
+</td>
+<td  width="20%" align="center">Collected?</td>
 </tr>
 <% @currencies.each_with_index do |currency, index| %>
 <% next if currency.name.empty? %>
 <tr>
 <td><%= link_to currency.currencycode, currency_countries_path(:currencycode=>currency.currencycode) %>
 (<%= @not_visited_countries_by_currencycode["#{currency.currencycode}"] %>/<%= @countries_by_currencycode["#{currency.currencycode}"] %>)
+
  </td><td><%= link_to currency.name, currency_countries_path(:name=>currency.name) %>
  (<%= @not_visited_countries_by_currencyname["#{currency.name}"] %>/<%= @countries_by_currencyname["#{currency.name}"] %>)
  
  </td>
+ <td><%= currency.collected %></td>
 </tr>
 <% end %>
 </table>
-
-
 
 

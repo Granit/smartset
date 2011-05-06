@@ -1,0 +1,48 @@
+<%= javascript_include_tag :defaults %>
+
+<% form_for(@trip) do |trip_form| %>
+<%= errors_for(@trip, "Unable to add new trip").html_safe %>
+
+<div class="trip_form">
+<% unless @trip.nil? %>
+ <% form_for(@trip) do |trip_form| %>
+<table id="table"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
+<tr>
+<td width="20%">Trip description</td>
+<td width="50%"><%= trip_form.text_area :description, :rows => 10, :cols => 40 %></td>
+<td>
+<% @trip.errors['description'].each do |error| %>
+<%=error%><br />
+<% end %>&nbsp;
+</td>
+</tr>
+<tr>
+<td>Trip date</td><td><%= trip_form.text_field :date, :size=>50 %> <br /></td>
+<td>
+<% @trip.errors['date'].each do |error| %>
+<%=error%><br />
+<% end %>&nbsp;<%= Time.now %>
+</td>
+</tr>
+<tr>
+<td>Trip Status</td><td><%#= trip_form.text_field :status, :disabled=>true  %><%= trip_form.select(:status, ['incompleted','completed'], {})%></td>
+<td>
+<% @trip.errors['status'].each do |error| %>
+<%=error%><br />
+<% end %>&nbsp;
+</td>
+</tr>
+<tr><td colspan="3">Countries</td></tr>
+<tr>
+<% @countries.each do |country|%>
+<td><%= check_box_tag("country_id[]", country.id, false) %></td>
+<td colspan="2"><font size="1"><%= country.name %>
+</font></td></tr>
+ <% end %>
+</table>
+ <% end %>
+<% end %>
+</div>
+<p><center><%= trip_form.submit "Save" %></center></p>
+<% end %>
+

@@ -1,0 +1,41 @@
+<table width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
+<tr>
+<td width="20%" style="padding-left: 10; background-color: silver;"><%= button_to 'Countries', countries_path, :method => 'get' %></td>
+<td width="60%" style="padding-left: 10; background-color: silver;"> <%= button_to 'Currencies', currencies_path, :method => 'get' %></td>
+<td style="padding-left: 10; background-color: silver;"><%= button_to 'Trips', trips_path, :method => 'get' %></td>
+</tr>
+</table>
+
+<table id="all_visited_countries"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
+<tr>
+<td align="center">Number of visited countries: <%= @visited_countries_size%></td>
+</tr>
+<tr>
+<td align="center"><%= button_to 'Add new trip', new_trip_path, :method => 'get' %></td>
+</tr>
+</table>
+
+<table id="form_countries"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
+<tr>
+<td  width="40%" align="center">Trip description</td>
+<td align="center"  width="20%" >Trip date</td>
+<td align="center"> Visited countries</td>
+<td align="center"> Trip status</td>
+</tr>
+<% @trips.each_with_index do |trip, index| %>
+<tr>
+<td><%= trip.description %> <%= link_to '>', trip %></td>
+<td><%= trip.date %></td>
+<td>
+<% trip.countries.each_with_index  do |country, index| %>
+<%= country.name %><br />
+<% end %>
+</td>
+<td><%= trip.status %><%=link_to image_tag("icons/button_checked.png",:border=>0, :title=>'to_complete'), update_trip_status_path(:id=>trip.id)%></td>
+</tr>
+<% end %>
+</table>
+
+
+
+

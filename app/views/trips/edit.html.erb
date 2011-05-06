@@ -1,0 +1,8 @@
+<h1>Editing trip</h1>
+
+<%= render :partial => "form" %>
+<center>
+<%= link_to 'Trips', trips_path %> |
+<%= link_to 'Show', @trip %> |
+<%= link_to 'Destroy', @trip, :confirm => 'Are you sure?', :method => :delete, :remote=>true %>
+</center>

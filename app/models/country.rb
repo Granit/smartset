@@ -1,7 +1,11 @@
 class Country < ActiveRecord::Base
 
-has_and_belongs_to_many :currencies
+	has_and_belongs_to_many :trips
+  has_many :monetizations, :dependent => :destroy
+  has_many :currencies, :through => :monetizations
 
+	before_save :update_visited_number, :update_collected_currencies
+	
 	def initialize(keys={})
 		super
 		self.visited ||= false
@@ -31,10 +35,21 @@ has_and_belongs_to_many :currencies
 #		end
 	end
 	
-	def visited?(id)
-		find(:all, :conditions => ["name = ?", name.to_s])
+	def self.visited?(v)
+		where(:visited => v)
 	end
-	def not_visited?(id)
-		find(:all, :conditions => ["name = ?", name.to_s])
+	
+	def update_visited_number
+		Monetization.by_country_id(self.id).each{|m|
+			m.visited=self.visited
+			m.save
+		}
+	end
+	
+	def update_collected_currencies
+		self.currencies.each{|currency|
+			currency.collected = true
+			currency.save	
+		}	
 	end
 end

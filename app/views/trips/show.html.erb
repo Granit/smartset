@@ -1,0 +1,25 @@
+<h1>Show Trip</h1>
+<table id="table"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
+<tr>
+<td width="20%">Trip description</td><td><%= raw @trip.description.gsub(/\n/, '<br/>').gsub(/script/, '') %>&nbsp;</td>
+</tr><tr>
+<td>Date</td><td><%= @trip.date%>&nbsp;</td>
+</tr><tr>
+<td>Status</td><td><%= @trip.status %>&nbsp;</td>
+</tr><tr>
+<td>Countries</td><td>
+<% @trip.countries.each_with_index  do |country, index| %>
+<%= country.name %><br />
+<% end %>
+</td>
+</tr>
+
+</table>
+
+<center>
+
+<%= link_to 'Trips', trips_path %> |
+<%= link_to 'Edit', edit_trip_path(@trip) %> |
+<%#= link_to 'Destroy', @trip, :confirm => 'Are you sure?', :method => :delete, :remote=>true %>
+<%= link_to 'Destroy', destroy_trip_path(:id=>@trip.id)%>
+</center>
