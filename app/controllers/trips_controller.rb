@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
-
+	before_filter :login_required, :except => [:index, :show]
+	
 	def index
-		@trips = Trip.all
+		@trips = Trip.find(:all, :order => "created_at ASC")
 		@visited_countries_size = Country.visited?(true).count
 	end
 	
@@ -24,6 +25,7 @@ class TripsController < ApplicationController
 	
 	def edit
 		@trip= Trip.find(params[:id])
+		@countries = Country.order("name").select{|country| country.visited == false}
 	end
 
 	def create

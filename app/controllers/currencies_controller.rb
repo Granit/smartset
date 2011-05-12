@@ -38,6 +38,7 @@ class CurrenciesController < ApplicationController
 			@currencies.each{|currency|
 			@currency_countries += currency.countries
 			}
+			@currency_countries.sort! {|c1,c2| c1.name.downcase <=> c2.name.downcase}
 	end
 	
 end

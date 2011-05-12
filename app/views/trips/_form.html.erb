@@ -21,7 +21,7 @@
 <td>
 <% @trip.errors['date'].each do |error| %>
 <%=error%><br />
-<% end %>&nbsp;<%= Time.now %>
+<% end %>&nbsp;
 </td>
 </tr>
 <tr>
@@ -32,11 +32,11 @@
 <% end %>&nbsp;
 </td>
 </tr>
-<tr><td colspan="3">Countries</td></tr>
+<tr><th colspan="3">Countries</td></tr>
 <tr>
 <% @countries.each do |country|%>
-<td><%= check_box_tag("country_id[]", country.id, false) %></td>
-<td colspan="2"><font size="1"><%= country.name %>
+<td><label id="<%=country.id%>" name="<%=country.name%>"><%= check_box_tag("country_id[]", country.id, false) %></label></td>
+<td colspan="2"><font size="1"><%= label_tag country.id, country.name%> 
 </font></td></tr>
  <% end %>
 </table>

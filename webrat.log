@@ -1,0 +1,6 @@
+# Logfile created on 2011-05-10 16:59:59 by logger.rb/22285
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"commit"=>"Log in", "utf8"=>"✓", "password"=>"admini", "login"=>"admini"} and HTTP headers {"HTTP_REFERER"=>"/"}
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: POST /session with {"commit"=>"Log in", "utf8"=>"✓", "password"=>"admini", "login"=>"admini"} and HTTP headers {"HTTP_REFERER"=>"/"}

@@ -1,21 +1,23 @@
-<h1>Smartset</h1>
-<table width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
-<tr>
-<td width="20%" style="padding-left: 10; background-color: silver;"><%= button_to 'Countries', countries_path, :method => 'get' %></td>
-<td width="60%" style="padding-left: 10; background-color: silver;"> <%= button_to 'Currencies', currencies_path, :method => 'get' %></td>
-<td style="padding-left: 10; background-color: silver;"><%= button_to 'Trips', trips_path, :method => 'get' %></td>
-</tr>
-</table>
-
 <table id="form_countries"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
+
 <tr>
-<td  width="20%" align="center">Country code</td>
-<td align="center">Country name</td>
-<td align="center">Visited?</td>
+<th  width="20%" align="center">Currency ISO</td>
+<th align="center">Currency name</td>
+<th  width="20%" align="center"></td>
+</tr>
+<tr>
+<td><%= params[:currencycode] %></td><td><%= params[:name] %></td>
+<td></td>
+</tr>
+
+<tr>
+<th width="20%" align="center">Country code</td>
+<th align="center">Country name</td>
+<th align="center">Visited?</td>
 </tr>
 <% @currency_countries.each_with_index do |country, index| %>
 <tr>
-<td><%= country.countrycode %></td><td><%= country.name %></td>
+<td><%= country.countrycode %></td><td><%= link_to country.name, country_currencies_path(:id=>country.id) %></td>
 <td>
 <div id="c_<%=country.id%>">
 <%=render :partial=>"currencies/check_country", :locals => { :country => country }%>

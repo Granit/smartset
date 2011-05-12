@@ -26,5 +26,9 @@ class Currency < ActiveRecord::Base
 	def self.by_visited_and_name(v, name)
 		self.where(:name => name).select {|currency| currency.monetizations[0].visited == v}
 	end
+
+	def self.collected?(v)
+		where(:collected => v)
+	end
 	
 end

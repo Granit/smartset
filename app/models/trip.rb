@@ -11,6 +11,7 @@ before_save :update_visited_countries
 	end
 	
 	def update_visited_countries
+		if self.status == 'completed'
 		self.countries.each{|country|
 			country.visited = true
 			country.save
@@ -19,6 +20,6 @@ before_save :update_visited_countries
 			#	currency.save	
 			#}	
 		}
-
+		end
 	end
 end

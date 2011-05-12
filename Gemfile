@@ -10,8 +10,16 @@ gem 'curb-fu'
 gem 'handsoap', :git => 'https://github.com/unwire/handsoap.git'
 gem 'heroku'
 
-
 group :test do
   gem 'rspec-rails'
   gem 'webrat', :git=> 'https://github.com/brynary/webrat.git'
 end
+group :cucumber do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'launchy'
+end 

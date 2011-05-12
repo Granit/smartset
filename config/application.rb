@@ -39,6 +39,13 @@ module Smartset
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+    require "#{config.root}/lib/authenticated_system"
+    require "#{config.root}/lib/authenticated_test_helper"
+    
+    config.generators do |g|
+		g.test_framework :rspec
+	end
+
 
   end
 end

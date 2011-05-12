@@ -11,7 +11,7 @@ class SmodelController < ApplicationController
 		sleep 0.001
 		}
 		
-		redirect_to :back, :params => params
+	#	redirect_to :back, :params => params
 	end
 	
 	def refresh_currency_list
@@ -32,7 +32,7 @@ class SmodelController < ApplicationController
 		sleep 0.001
 		}
 		
-		redirect_to :back, :params => params
+	#	redirect_to :back, :params => params
 	end
 	
 end

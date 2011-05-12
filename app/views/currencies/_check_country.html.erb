@@ -2,7 +2,7 @@
 <%= country.visited %>
 
 <%= form_for country, :remote => true, :url => update_country_path(country.id) do |f| %>
-<%= f.check_box 'visited', :class => 'submittable'  %>
+<label id="<%=country.id%>" name="<%=country.name%>"><%= f.check_box 'visited', :class => 'submittable'  %></label>
 <%#= check_box_tag country.name, country.id, country.visited, :id=>"c_#{country.id}" %>
 
 <% end %>

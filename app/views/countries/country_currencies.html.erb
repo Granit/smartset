@@ -1,0 +1,35 @@
+<table id="form_country_currencies"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
+
+<tr>
+<th  width="20%" align="center">Country code</td>
+<th align="center">Country name</td>
+<th  width="20%" align="center">Visisted?</td>
+</tr>
+<tr>
+<td><%= @country.countrycode %></td><td><%= @country.name %></td>
+<td><% if @country.visited %>
+		<%= image_tag("icons/status_checked.png",:border=>0, :title=>'visited') %>
+	<% else %>
+		<%= image_tag("icons/status_shutdown.png",:border=>0, :title=>'not_visited') %>
+	<% end %>
+</td>
+</tr>
+
+<tr>
+<th  width="20%" align="center">Currency code</td>
+<th align="center">Currency name</td>
+<th  width="20%" align="center">Collected?</td>
+</tr>
+<% @country_currencies.each_with_index do |currency, index| %>
+<% next if currency.name.empty? %>
+<tr>
+<td><%= link_to currency.currencycode, currency_countries_path(:currencycode=>currency.currencycode) %></td><td><%= link_to currency.name, currency_countries_path(:name=>currency.name) %></td>
+<td><% if currency.collected %>
+		<%= image_tag("icons/status_checked.png",:border=>0, :title=>'collected') %>
+	<% else %>
+		<%= image_tag("icons/status_shutdown.png",:border=>0, :title=>'not_collected') %>
+	<% end %>
+</td>
+</tr>
+<% end %>
+</table>

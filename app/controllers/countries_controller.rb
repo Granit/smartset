@@ -1,13 +1,12 @@
 class CountriesController < ApplicationController
-
+	before_filter :login_required, :except => [:index]
 	def index
-		#require "#{RAILS_ROOT}/app/models/smodel"
-		#@countries = Country.get_countries# rescue []
-		#if (params[:countries].nil?)
 			@countries = Country.order("name")
-		#else
-		#	@countries = params[:countries]
-		#end
+	end
+	
+	def country_currencies
+			@country = Country.find(params[:id])
+			@country_currencies = @country.currencies
 	end
 	
 	def update_country	#params[:id]

@@ -9,6 +9,31 @@
 <body>
 <div id="container">
 <h1><%= link_to "Smartset", root_path, :class => 'someclass' -%></h1>
+
+<table id="table"  align="center" style="background-color:white" cellpadding="2" cellspacing="0"><tr>
+<td>
+<% if current_user.nil? %>
+<div style="width:100px;height:40px"><font style="color: red"><%= flash[:notice] %></font></div></td>
+<td>
+<% form_tag session_path do -%>
+<div class="logout_table" align="center">
+<%= label_tag 'remember_me', 'remember me' %><%= check_box_tag 'remember_me', '1', @remember_me %> <%= text_field_tag 'login', @login %> <%= password_field_tag 'password', nil %> <%= submit_tag 'Log in' %>
+</div>
+<% end -%>
+<% else %>
+ You are logged in as <strong><%=h current_user.login %></strong></td>
+<td><p><%= link_to 'Logout', logout_path %>
+<% end %>
+</td>
+</tr></table>
+
+<table id="top_form"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
+<tr>
+<td width="20%" style="padding-left: 10; background-color: silver;"><%= button_to 'Countries', countries_path, :method => 'get' %></td>
+<td width="60%" style="padding-left: 10; background-color: silver;"><%= button_to 'Currencies', currencies_path, :method => 'get' %></td>
+<td style="padding-left: 10; background-color: silver;"><%= button_to 'Trips', trips_path, :method => 'get' %></td>
+</tr>
+</table>
 <%= yield %>
 
 </body>

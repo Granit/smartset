@@ -32,6 +32,21 @@ class CreateAllTables < ActiveRecord::Migration
       t.column :country_id, :integer
       t.column :trip_id, :integer
     end
+    
+    create_table :users, :force => true do |t|
+      t.string   :login,                     :limit => 40
+      t.string   :name,                      :limit => 100, :default => '', :null => true
+      t.string   :email,                     :limit => 100
+      t.string   :crypted_password,          :limit => 40
+      t.string   :salt,                      :limit => 40
+      t.datetime :created_at
+      t.datetime :updated_at
+      t.string   :remember_token,            :limit => 40
+      t.datetime :remember_token_expires_at
+
+    end
+    add_index :users, :login, :unique => true
+    
   end
 
   def self.down
@@ -40,5 +55,6 @@ class CreateAllTables < ActiveRecord::Migration
     drop_table :monetizations
     drop_table :trips
     drop_table :countries_trips
+    drop_table :users
   end
 end

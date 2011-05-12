@@ -1,7 +1,7 @@
 <h1>Show Trip</h1>
 <table id="table"  width="80%" align="center" style="background-color:silver" cellpadding="2" cellspacing="0" border="1">
 <tr>
-<td width="20%">Trip description</td><td><%= raw @trip.description.gsub(/\n/, '<br/>').gsub(/script/, '') %>&nbsp;</td>
+<td width="20%">Trip description</td><td><%= raw @trip.description.gsub(/\n/, '<br/>').gsub(/\<script/, '') %>&nbsp;</td>
 </tr><tr>
 <td>Date</td><td><%= @trip.date%>&nbsp;</td>
 </tr><tr>
@@ -9,7 +9,14 @@
 </tr><tr>
 <td>Countries</td><td>
 <% @trip.countries.each_with_index  do |country, index| %>
-<%= country.name %><br />
+<%= country.name %>
+<% if country.visited %>
+		<%= image_tag("icons/status_checked.png",:border=>0, :title=>'visited') %>
+	<% else %>
+		<%= image_tag("icons/status_shutdown.png",:border=>0, :title=>'not_visited') %>
+	<% end %>
+
+<br />
 <% end %>
 </td>
 </tr>
