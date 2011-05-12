@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
- 
+=begin
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
@@ -36,5 +36,5 @@ class UsersController < ApplicationController
 #		render :action => 'new'
 #	end
   end
-
+=end
 end

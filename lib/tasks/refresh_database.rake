@@ -20,5 +20,18 @@ begin
       SmodelController.new.refresh_currency_list
     end
     
+  	desc "Register owner of collection"
+    task :register_owner => :environment do
+      
+
+    end
+    desc "Register owner of collection"
+    task :register_owner, [:login, :password] => :environment do |t, args|
+		args.with_defaults(:login => "Smart", :password => "verysmart")
+		puts "Registering owner with login #{args.login} and password #{args.password}"
+		u=User.new('login'=>args.login,:password=>args.password, :password_confirmation=>args.password, :email=>"admin@gmail.com")
+		u.save
+   end
+
   end
 end
