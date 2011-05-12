@@ -12,5 +12,13 @@ begin
       SmodelController.new.refresh_currency_list
     end
     
+  	desc "Refresh country and currency"
+    task :refresh_all => :environment do
+      puts "Refreshing country list from soap server http://www.webservicex.net/country.asmx"
+      SmodelController.new.refresh_country_list
+      puts "Refreshing currency list from soap server http://www.webservicex.net/country.asmx"
+      SmodelController.new.refresh_currency_list
+    end
+    
   end
 end
